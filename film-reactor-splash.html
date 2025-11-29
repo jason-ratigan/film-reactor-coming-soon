@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Reactor - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Splash Screen */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeOut 1s ease-in-out 4s forwards;
+        }
+
+        #splash h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite, gradient 3s ease infinite;
+            text-shadow: 0 0 40px rgba(255, 107, 107, 0.5),
+                         0 0 80px rgba(255, 217, 61, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.05);
+                filter: brightness(1.2);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Main Content */
+        #content {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 4.5s forwards;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .coming-soon {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 3rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #ffd93d;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+            border-left-color: #ffd93d;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .feature-item p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .waitlist {
+            text-align: center;
+        }
+
+        .waitlist h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffd93d;
+        }
+
+        .waitlist p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .form-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .form-placeholder p {
+            color: #a0a0a0;
+            font-style: italic;
+        }
+
+        .form-placeholder a {
+            color: #4d96ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-placeholder a:hover {
+            color: #6bcf7f;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #splash h1 {
+                font-size: 3rem;
+            }
+
+            .logo h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <h1>Film Reactor</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <div class="container">
+            <div class="logo">
+                <h2>FILM REACTOR</h2>
+            </div>
+
+            <div class="coming-soon">
+                Coming Soon
+            </div>
+
+            <div class="features">
+                <h3>What's Coming</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>🎯 Smart Movie Rankings</h4>
+                        <p>Rate and rank your favorite films through intelligent comparison tools that help you discover what you truly love.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🎮 Movie Games</h4>
+                        <p>Challenge yourself and friends with engaging movie-based games that test your cinema knowledge.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📊 Data-Driven Discovery</h4>
+                        <p>Explore films through powerful statistics and insights that reveal hidden gems tailored to your taste.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📚 Complete Movie History</h4>
+                        <p>Your one-stop destination for comprehensive film history, from classics to modern masterpieces.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🤝 Connect with Cinephiles</h4>
+                        <p>Find and engage with like-minded movie buffs who share your passion for cinema.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⚖️ Eliminate Recency Bias</h4>
+                        <p>Get fair, balanced movie ratings that don't overvalue the latest releases at the expense of timeless classics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="waitlist">
+                <h3>Join the Waitlist</h3>
+                <p>Be the first to know when Film Reactor launches</p>
+                
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc4uKYmjCYvCTO48F2qFHTFnczBiMZNaxuQp6EEQSXBN5nySQ/viewform?embedded=true" width="640" height="581" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
